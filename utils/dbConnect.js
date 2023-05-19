@@ -1,5 +1,6 @@
 const { MongoClient } = require("mongodb");
 const connectionString = process.env.ATLAS_URI;
+const dbName = process.env.DB_NAME
 const client = new MongoClient(connectionString, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -14,7 +15,7 @@ module.exports = {
         return callback(err);
       }
 
-      dbConnection = db.db("OolioLabs"); // write your database name
+      dbConnection = db.db(dbName); // write your database name
       console.log("Successfully connected to MongoDB.");
 
       return callback();
